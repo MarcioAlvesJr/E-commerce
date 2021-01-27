@@ -15,6 +15,13 @@ $color-6: #e3b8d0;
   outline: none;
   font-family: "Roboto", sans-serif;
   text-decoration: none;
+
+  transition: ease 0.3s;
+
+  button,
+  input {
+    user-select: none;
+  }
 }
 
 body {
@@ -63,6 +70,13 @@ button {
     margin: 0 0 0 1vh;
   }
 }
+.num-input {
+  border-radius: 3vh;
+  border-color: $color-1;
+  padding: 0 1vh;
+  text-align: center;
+}
+
 button:hover,
 .back.btn:hover {
   filter: brightness(0.9);
@@ -107,10 +121,6 @@ button:active,
   }
 }
 
-.initial {
-  display: none;
-}
-
 .selected {
   .item-wrapper {
     width: fit-content;
@@ -130,6 +140,15 @@ button:active,
     .side {
       grid-column: 2/3;
     }
+
+    input,
+    button {
+      width: fit-content;
+    }
+
+    button {
+      cursor: pointer;
+    }
   }
   h1 {
     width: fit-content;
@@ -137,4 +156,129 @@ button:active,
     margin: auto;
     font-weight: 100;
   }
+}
+
+.shopping-cart {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  margin: auto;
+  ul {
+    li {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: $color-5;
+      * {
+        height: fit-content;
+        margin: 3vh;
+      }
+      button.delete {
+        border-radius: 100%;
+      }
+    }
+  }
+  p {
+    align-self: flex-end;
+    margin: 4vh 0;
+    font-weight: bold;
+    color: $color-5;
+  }
+  button.checkout {
+    align-self: flex-end;
+    font-weight: bold;
+    font-size: 3vh;
+    border-radius: 0.5vh;
+  }
+}
+
+.checkout {
+  position: relative;
+  display: flex;
+  width: fit-content;
+  margin: auto;
+  align-items: center;
+  padding: 2.5vh;
+
+  h1 {
+    font-weight: normal;
+  }
+
+  div,
+  .phases li {
+    padding: 1vh 2vh;
+  }
+
+  .phases {
+    flex-grow: 3;
+
+    li {
+      background-color: $color-5;
+      margin: 1vh;
+      opacity: 0.8;
+
+      input {
+        margin: 1vh 2vh 1vh 0;
+        border: none;
+        border-radius: 999vh;
+        padding: 1vh 2vh;
+      }
+      button {
+        margin-top: 1vh;
+        background-color: $color-2;
+        color: white;
+      }
+
+      .else {
+        height: 0;
+        opacity: 0;
+      }
+    }
+    li.active {
+      opacity: 1;
+      .else {
+        height: fit-content;
+        opacity: 1;
+      }
+    }
+  }
+  .order-summary {
+    flex-grow: 1;
+    background-color: $color-5;
+  }
+}
+
+.alert {
+  position: absolute;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  h1 {
+    background-color: white;
+    color: $color-1;
+    width: fit-content;
+    margin: auto;
+    margin-bottom: 1vh;
+    padding: 3vh;
+    border-radius: 99vh;
+  }
+  button {
+    width: fit-content;
+    margin: auto;
+    cursor: pointer;
+  }
+}
+
+.wrapper.blurry {
+  filter: blur(1vh) brightness(0.7);
+}
+
+.hidden-none {
+  display: none;
+}
+
+.hidden-space {
+  transform: scale(0);
 }

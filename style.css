@@ -8,6 +8,16 @@
   outline: none;
   font-family: "Roboto", sans-serif;
   text-decoration: none;
+  -webkit-transition: ease 0.3s;
+  transition: ease 0.3s;
+}
+
+* button,
+* input {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 body {
@@ -73,6 +83,13 @@ button svg {
   margin: 0 0 0 1vh;
 }
 
+.num-input {
+  border-radius: 3vh;
+  border-color: #231942;
+  padding: 0 1vh;
+  text-align: center;
+}
+
 button:hover,
 .back.btn:hover {
   -webkit-filter: brightness(0.9);
@@ -128,10 +145,6 @@ button:active,
           transform: scale(0.95);
 }
 
-.initial {
-  display: none;
-}
-
 .selected .item-wrapper {
   width: -webkit-fit-content;
   width: -moz-fit-content;
@@ -159,6 +172,17 @@ button:active,
   grid-column: 2/3;
 }
 
+.selected .item input,
+.selected .item button {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.selected .item button {
+  cursor: pointer;
+}
+
 .selected h1 {
   width: -webkit-fit-content;
   width: -moz-fit-content;
@@ -166,5 +190,179 @@ button:active,
   padding-top: 3vh;
   margin: auto;
   font-weight: 100;
+}
+
+.shopping-cart {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: auto;
+}
+
+.shopping-cart ul li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: #e0b1cb;
+}
+
+.shopping-cart ul li * {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  margin: 3vh;
+}
+
+.shopping-cart ul li button.delete {
+  border-radius: 100%;
+}
+
+.shopping-cart p {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  margin: 4vh 0;
+  font-weight: bold;
+  color: #e0b1cb;
+}
+
+.shopping-cart button.checkout {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  font-weight: bold;
+  font-size: 3vh;
+  border-radius: 0.5vh;
+}
+
+.checkout {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: auto;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 2.5vh;
+}
+
+.checkout h1 {
+  font-weight: normal;
+}
+
+.checkout div,
+.checkout .phases li {
+  padding: 1vh 2vh;
+}
+
+.checkout .phases {
+  -webkit-box-flex: 3;
+      -ms-flex-positive: 3;
+          flex-grow: 3;
+}
+
+.checkout .phases li {
+  background-color: #e0b1cb;
+  margin: 1vh;
+  opacity: 0.8;
+}
+
+.checkout .phases li input {
+  margin: 1vh 2vh 1vh 0;
+  border: none;
+  border-radius: 999vh;
+  padding: 1vh 2vh;
+}
+
+.checkout .phases li button {
+  margin-top: 1vh;
+  background-color: #5e548e;
+  color: white;
+}
+
+.checkout .phases li .else {
+  height: 0;
+  opacity: 0;
+}
+
+.checkout .phases li.active {
+  opacity: 1;
+}
+
+.checkout .phases li.active .else {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  opacity: 1;
+}
+
+.checkout .order-summary {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  background-color: #e0b1cb;
+}
+
+.alert {
+  position: absolute;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.alert h1 {
+  background-color: white;
+  color: #231942;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: auto;
+  margin-bottom: 1vh;
+  padding: 3vh;
+  border-radius: 99vh;
+}
+
+.alert button {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: auto;
+  cursor: pointer;
+}
+
+.wrapper.blurry {
+  -webkit-filter: blur(1vh) brightness(0.7);
+          filter: blur(1vh) brightness(0.7);
+}
+
+.hidden-none {
+  display: none;
+}
+
+.hidden-space {
+  -webkit-transform: scale(0);
+          transform: scale(0);
 }
 /*# sourceMappingURL=style.css.map */
