@@ -25,7 +25,12 @@ body {
 }
 
 header {
-  padding: 0 2vh;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 99;
+  background-color: #5e548e;
+  padding: 0 2vh 3vh 2vh;
   margin-bottom: 4vh;
 }
 
@@ -122,17 +127,25 @@ button:active,
   color: #be95c4;
   background-color: #231942;
   cursor: pointer;
+  position: relative;
   -webkit-transition: 0.3s ease;
   transition: 0.3s ease;
 }
 
 .items li img {
   width: 100%;
-  max-height: 60%;
+  height: 60%;
 }
 
 .items li h2 {
   font-weight: 400;
+  max-width: 100%;
+  font-size: 3vh;
+}
+
+.items li .value {
+  position: absolute;
+  bottom: 1.5vh;
 }
 
 .items li:hover {
@@ -164,6 +177,7 @@ button:active,
 
 .selected .item img {
   grid-row: span 6;
+  max-width: 30vh;
 }
 
 .selected .item .side {
