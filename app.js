@@ -10,6 +10,10 @@ const
         goTo(0)
 
     })
+    
+    DOM_addToCart = document.querySelector('.white-round.side')
+
+
 
 
 //CLICK SHOW ITEM
@@ -28,6 +32,14 @@ DOM_items.forEach(item =>{
         goTo(1)
     })
 })
+
+//CLICK ADD TO CART
+
+DOM_addToCart.addEventListener('click', addToCart)
+
+function addToCart(){
+    console.log('add to cart')
+}
 
 function goTo(n){
     DOM_mainDivs.forEach(div =>{
