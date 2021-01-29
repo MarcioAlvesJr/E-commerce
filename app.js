@@ -1,18 +1,30 @@
 //UI DOM VARIABLES
+let inputValue = undefined
 
 const 
-    DOM_items = document.querySelectorAll(".items li"),
-    DOM_mainDivs = document.querySelectorAll(".initial, .selected, .shopping-cart,div.checkout"),
-    DOM_backBtn = document.querySelector(".back.btn")
-    
+    DOM_items = document.querySelectorAll(".items li")
+    DOM_mainDivs = document.querySelectorAll(".initial, .selected, .shopping-cart,div.checkout")
+    DOM_backBtn = document.querySelector(".back.btn")  
     DOM_backBtn.addEventListener('click', ()=>{
         DOM_backBtn.classList.add("hidden-space")
         goTo(0)
 
-    })
-    
+    })  
     DOM_addToCart = document.querySelector('.white-round.side')
+    DOM_inputQuantity = document.querySelector('input.side')
 
+    
+    DOM_inputQuantity.addEventListener('keyup', ()=>{
+        
+        DOM_inputQuantity.value = Math.round(DOM_inputQuantity.value)
+
+        if(DOM_inputQuantity.value > parseInt(DOM_inputQuantity.max)){
+            DOM_inputQuantity.value = DOM_inputQuantity.max
+        }
+        if(DOM_inputQuantity.value < parseInt(DOM_inputQuantity.min)){
+            DOM_inputQuantity.value = DOM_inputQuantity.min
+        }
+    })
 
 
 
