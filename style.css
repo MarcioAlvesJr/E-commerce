@@ -63,6 +63,12 @@ header .btns * {
   transition: 0.3s ease;
 }
 
+header .btns span {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
 button {
   font-weight: bold;
   color: #231942;
