@@ -276,6 +276,7 @@ button:active,
   font-weight: bold;
   font-size: 3vh;
   border-radius: 0.5vh;
+  cursor: pointer;
 }
 
 .checkout {
@@ -312,6 +313,8 @@ button:active,
   background-color: #e0b1cb;
   margin: 1vh;
   opacity: 0.8;
+  -webkit-transition: 0.7s ease-in-out;
+  transition: 0.7s ease-in-out;
 }
 
 .checkout .phases li input {
@@ -330,6 +333,10 @@ button:active,
 .checkout .phases li .else {
   height: 0;
   opacity: 0;
+}
+
+.checkout .phases li .pointer {
+  cursor: pointer;
 }
 
 .checkout .phases li.active {

@@ -218,6 +218,7 @@ button:active,
     font-weight: bold;
     font-size: 3vh;
     border-radius: 0.5vh;
+    cursor: pointer;
   }
 }
 
@@ -245,6 +246,7 @@ button:active,
       background-color: $color-5;
       margin: 1vh;
       opacity: 0.8;
+      transition: 0.7s ease-in-out;
 
       input {
         margin: 1vh 2vh 1vh 0;
@@ -261,6 +263,9 @@ button:active,
       .else {
         height: 0;
         opacity: 0;
+      }
+      .pointer {
+        cursor: pointer;
       }
     }
     li.active {

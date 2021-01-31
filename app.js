@@ -22,6 +22,10 @@ const
     DOM_addToCart = document.querySelector('.white-round.side')
     DOM_inputQuantity = document.querySelector('input.side')
     DOM_cartBtn = document.querySelector("header button")
+    DOM_checkoutBtn = document.querySelector('button.checkout')
+    DOM_phases = document.querySelectorAll(".phases li")
+    DOM_PurchaseBtn = DOM_phases[3].querySelector('button')
+    DOM_backToStoreBtn = document.querySelector('.alert button')
 
 
 //Event Listeners
@@ -42,6 +46,26 @@ const
     DOM_cartBtn.addEventListener('click',()=>{
         cartToDom()
         goTo(2)
+    })
+    DOM_checkoutBtn.addEventListener('click', ( )=>{
+        goTo(3)
+        showSummary()
+        DOM_backBtn.classList.add("hidden-space")
+        showphase()
+    })
+
+    DOM_PurchaseBtn.addEventListener('click', ()=>{
+        cart = []
+        document.querySelector('.wrapper').classList.add('blurry')
+        document.querySelector('.alert').classList.remove("hidden-none")
+    })
+    DOM_backToStoreBtn.addEventListener('click', ()=>{
+        document.querySelectorAll('.checkout input').forEach(input => input.value = "")
+        DOM_phases[DOM_phases.length-1].classList.remove('active')
+        DOM_phases[0].classList.add('active')
+        document.querySelector('.alert').classList.add("hidden-none")
+        document.querySelector('.wrapper').classList.remove('blurry')
+        goTo(0)     
     })
 
 
@@ -125,7 +149,7 @@ function addToCart(){
 }
 
 function goTo(n){
-    if(n == 2){
+    if(n == 2 || n == 3){
         DOM_backBtn.classList.remove("hidden-space")
         DOM_cartBtn.classList.add("hidden-space")
     }else{
@@ -206,4 +230,62 @@ function updateCart(){
     })
     checkCart(true)
     cartToDom()
+}
+
+function showSummary(){
+    const summary = document.querySelector(".order-summary ul")
+    summary.innerHTML = ""
+    let totalValue = 0
+
+    cart.forEach(item =>{
+        let newItem = document.createElement('li')
+        newItem.innerHTML = `${item.name}/$ ${item.value * item.quantity}`
+        summary.appendChild( newItem)
+
+        totalValue = totalValue + item.value * item.quantity
+    })
+
+    document.querySelector(".checkout .order-summary p span").innerText = totalValue.toFixed(2)
+}
+
+function showphase(){
+    DOM_phases.forEach((phase, idx) =>{
+        setTimeout(()=>{ 
+            setTimeout(()=>{
+
+                phase.querySelectorAll("input").forEach(((input,idx) =>{
+                    setTimeout(()=>{
+
+                            const genericInfo = input.getAttribute("generic-info")
+                            let inputText = []
+
+                            genericInfo.split("").forEach((letter,idx)=>{
+                                setTimeout(()=>{
+                                inputText.push(letter)
+                                input.value = inputText.join("")
+                             },100*idx)
+                            })
+
+
+
+                    }, 100*idx*phase.querySelectorAll("input").length)
+
+                }))
+            }, 900)
+
+            if(idx >0){
+
+
+                phase.classList.add('active')
+                if(idx<= DOM_phases.length){
+                    DOM_phases[idx-1].classList.remove('active')
+                }
+    
+            }
+            
+    }, 
+        3000*idx)
+
+    })
+
 }
