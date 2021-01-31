@@ -203,7 +203,7 @@ button:active,
 
       img {
         height: 30vh;
-        width: 60vh;
+        width: 30vh;
       }
     }
   }
@@ -315,4 +315,38 @@ button:active,
 
 .hidden-space {
   transform: scale(0);
+}
+
+@media (max-width: 950px) {
+  header {
+    h1 {
+      position: relative;
+      top: 3vh;
+    }
+    .btns {
+      position: relative;
+      top: 3vh;
+    }
+  }
+  .items {
+    grid-template-columns: repeat(2, 22vh);
+  }
+
+  .checkout {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 850px) {
+  .shopping-cart {
+    li {
+      flex-direction: column;
+    }
+  }
+}
+
+@media (max-width: 450px) {
+  .items {
+    grid-template-columns: repeat(1, 22vh);
+  }
 }
