@@ -180,18 +180,30 @@ button:active,
   flex-direction: column;
   width: fit-content;
   margin: auto;
+  margin-bottom: 3vh;
   ul {
     li {
       display: flex;
       align-items: center;
       justify-content: center;
       background-color: $color-5;
-      * {
+      margin-bottom: 1.5vh;
+      img,
+      h2,
+      p,
+      input,
+      button {
         height: fit-content;
         margin: 3vh;
       }
       button.delete {
         border-radius: 100%;
+        cursor: pointer;
+      }
+
+      img {
+        height: 30vh;
+        width: 60vh;
       }
     }
   }

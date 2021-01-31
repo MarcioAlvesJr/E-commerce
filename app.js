@@ -1,4 +1,5 @@
 let cart = []
+    newCartTotal = 0
 
 
 class CartItem{
@@ -38,6 +39,11 @@ const
         
     })
 
+    DOM_cartBtn.addEventListener('click',()=>{
+        cartToDom()
+        goTo(2)
+    })
+
 
 
 //CLICK SHOW ITEM
@@ -68,8 +74,9 @@ DOM_items.forEach(item =>{
 
 DOM_addToCart.addEventListener('click', addToCart)
 
-function checkCart(){
-    let newCartTotal = 0
+function checkCart(hide){
+    newCartTotal = 0
+
 
     cart.forEach(item =>{
         newCartTotal = newCartTotal + item.value * item.quantity
@@ -80,7 +87,10 @@ function checkCart(){
     if(cart.length == 0){
         DOM_cartBtn.classList.add('hidden-space')
     }else{
-        DOM_cartBtn.classList.remove('hidden-space') 
+        if(hide != true){
+            DOM_cartBtn.classList.remove('hidden-space') 
+        }
+
     }
 }
 checkCart()
@@ -115,6 +125,12 @@ function addToCart(){
 }
 
 function goTo(n){
+    if(n == 2){
+        DOM_backBtn.classList.remove("hidden-space")
+        DOM_cartBtn.classList.add("hidden-space")
+    }else{
+        checkCart()
+    }
     DOM_mainDivs.forEach(div =>{
         div.classList.add("hidden-none")
     })
@@ -129,4 +145,65 @@ function fixInput(input){
         if(input.value < parseInt(input.min)){
             input.value = input.min
         }
+}
+
+function cartToDom(){
+    if(cart.length == 0){
+        DOM_backBtn.classList.add("hidden-space")
+        goTo(0)
+    }
+    else{
+        const cartList = DOM_mainDivs[2].querySelector('ul')
+        cartList.innerHTML = ""
+        cart.forEach(item =>{
+            cartList.appendChild(createLi(item))
+        })
+        document.querySelector(".shopping-cart p span").innerText = newCartTotal.toFixed(2)
+    }
+
+}
+
+function createLi(item ){
+    const li = document.createElement("li")
+
+    li.innerHTML=`
+    <img src="${item.img}" alt="">
+    <h2 class="title">${item.name}</h2>
+    <h2 class="value side">$ <span real-value="${item.value}">${(item.value*item.quantity).toFixed(2)}</span></h2>
+    <input type="number" class="num-input" min="1" max="99" value="${item.quantity}" >
+    <button class="delete">x</button>
+    `
+
+    li.querySelector("input").addEventListener('input', ()=>{
+        fixInput(li.querySelector("input"))
+    })
+    li.querySelector("input").addEventListener('input', ()=>{
+        li.querySelector('h2 span').innerText =
+        (Number(li.querySelector('h2 span').getAttribute("real-value")) * li.querySelector("input").value).toFixed(2)
+
+        updateCart()
+    })
+    li.querySelector(".delete").addEventListener('click', (e)=>{
+        let newCart = []
+
+        cart.forEach(item =>{
+            if(item.img != e.path[1].querySelector("img").src){
+                newCart.push(item)
+            }
+        })
+        cart = newCart
+        checkCart(true)
+        cartToDom()
+    })
+
+
+    return li
+}
+
+function updateCart(){
+    cart.forEach((item, idx) =>{
+        item.quantity = Number(document.querySelectorAll(".shopping-cart ul li")[idx].querySelector('input').value)
+    })
+    checkCart(true)
+    cartToDom()
 }

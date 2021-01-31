@@ -224,6 +224,7 @@ button:active,
   width: -moz-fit-content;
   width: fit-content;
   margin: auto;
+  margin-bottom: 3vh;
 }
 
 .shopping-cart ul li {
@@ -237,9 +238,14 @@ button:active,
       -ms-flex-pack: center;
           justify-content: center;
   background-color: #e0b1cb;
+  margin-bottom: 1.5vh;
 }
 
-.shopping-cart ul li * {
+.shopping-cart ul li img,
+.shopping-cart ul li h2,
+.shopping-cart ul li p,
+.shopping-cart ul li input,
+.shopping-cart ul li button {
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
@@ -248,6 +254,12 @@ button:active,
 
 .shopping-cart ul li button.delete {
   border-radius: 100%;
+  cursor: pointer;
+}
+
+.shopping-cart ul li img {
+  height: 30vh;
+  width: 60vh;
 }
 
 .shopping-cart p {
