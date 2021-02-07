@@ -1,6 +1,6 @@
 # Oceancio's Store
-This app gets data from the [Amiibo Api](https://amiiboapi.com/).
-Using the search bar you can use keywords to find a specific Amiibo.
+This project is a front-end e-commerce interface.
+You can see more info about a specific item, put it in the shopping cart and then check out.
 
 <br />
 
