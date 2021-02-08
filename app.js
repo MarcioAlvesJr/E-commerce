@@ -54,11 +54,6 @@ const
         showphase()
     })
 
-    DOM_PurchaseBtn.addEventListener('click', ()=>{
-        cart = []
-        document.querySelector('.wrapper').classList.add('blurry')
-        document.querySelector('.alert').classList.remove("hidden-none")
-    })
     DOM_backToStoreBtn.addEventListener('click', ()=>{
         document.querySelectorAll('.checkout input').forEach(input => input.value = "")
         DOM_phases[DOM_phases.length-1].classList.remove('active')
@@ -282,10 +277,19 @@ function showphase(){
                 }
     
             }
+
+
+            
             
     }, 
         3000*idx)
 
     })
+    setTimeout(()=>{finishPurshase()}, 10500)
 
+}
+function finishPurshase(){
+    cart = []
+    document.querySelector('.wrapper').classList.add('blurry')
+    document.querySelector('.alert').classList.remove("hidden-none")
 }
